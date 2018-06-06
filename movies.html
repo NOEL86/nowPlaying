@@ -4,8 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Now Playing: Movies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif|Open+Sans+Condensed:300|Oswald|Passion+One|Sigmar+One|Fjalla+One"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -14,9 +17,10 @@
 
 </head>
 
-<body>
+<body id="moviesTV">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img src="assets/images/favicon.png" style="width: 2.5%; height: 2.5%;" alt="Popcorn">
         <a class="navbar-brand" href="index.html">Now Playing</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -48,8 +52,46 @@
         </div>
     </nav>
 
+    <div class="container-fluid center">
+        <div class="row">
+            <div class="col-md-2 mb-4"></div>
+            <div class="col-md-4 mb-4">
+                <div class="card card-block d-flex bg-light">
+                    <div class="card-header nowPlaying">Now Playing</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Movie 1</li>
+                        <li class="list-group-item">Movie 2</li>
+                        <li class="list-group-item">Movie 3</li>
+                        <li class="list-group-item">Movie 4</li>
+                        <li class="list-group-item">Movie 5</li>
+                        <li class="list-group-item">Movie 6</li>
+                        <li class="list-group-item">Movie 7</li>
+                        <li class="list-group-item">Movie 8</li>
+                        <li class="list-group-item">Movie 9</li>
+                        <li class="list-group-item">Movie 10</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card card-block d-flex bg-light">
+                    <div class="card-header nowStreaming">Now Streaming</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Movie 1</li>
+                        <li class="list-group-item">Movie 2</li>
+                        <li class="list-group-item">Movie 3</li>
+                        <li class="list-group-item">Movie 4</li>
+                        <li class="list-group-item">Movie 5</li>
+                        <li class="list-group-item">Movie 6</li>
+                        <li class="list-group-item">Movie 7</li>
+                        <li class="list-group-item">Movie 8</li>
+                        <li class="list-group-item">Movie 9</li>
+                        <li class="list-group-item">Movie 10</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script src="assets/jiggy.js"></script>
 </body>
 
 </html>
