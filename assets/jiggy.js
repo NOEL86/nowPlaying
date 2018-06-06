@@ -1,12 +1,22 @@
-var mUrl = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&" + apiKey
-var apiKey = "apikey=b9c0f031"
-var title = "";
 
+$("#movie-search").on("click", function () {
+    search();
+});
 
+$("#tv-search").on("click", function () {
+    search();
+});
 
-$("#search").on("click", function () {
+$("#type-search").on("click", function () {
+    search();
+})
+
+function search() {
 
     var title = $("#input").val().trim();
+    var mUrl = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&" + apiKey
+    var apiKey = "apikey=b9c0f031"
+    var title = "";
 
     $.ajax({
         url: "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&" + apiKey,
@@ -15,30 +25,28 @@ $("#search").on("click", function () {
         console.log(response);
     })
 
-})
+    var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=' + q;
+    var q = "";
 
-$.ajax({
-    url: "https://www.youtube.com/embed?listType=search&list=QUERY",
-    method: "GET"
-}).then(function (response) {
-    console.log(response);
-})
+    $.ajax({
+        url: "https://www.youtube.com/embed?listType=search&list=QUERY",
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+    })
 
-function init() {
-    gapi.client.setApiKey('AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0');
-    gapi.client.load("youtube", "v3", function () {
+    function init() {
+        gapi.client.setApiKey('AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0');
+        gapi.client.load("youtube", "v3", function () {
+        });
 
-    });
+    }
 
-}
+};
 
 
 
 // Load the IFrame Player API code asynchronously.
-<div id="ytplayer"></div>
-var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=QUERY';
-
-
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
