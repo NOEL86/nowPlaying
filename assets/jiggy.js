@@ -25,7 +25,7 @@ function search() {
         console.log(response);
     })
 
-    var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=' + q;
+    var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=Batman';
     var q = "";
 
     $.ajax({
@@ -41,6 +41,8 @@ function search() {
         });
 
     }
+
+    console.log(response);
 
 };
 
