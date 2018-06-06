@@ -1,0 +1,51 @@
+/* Font Options 
+/* font-family: 'Sigmar One', cursive !important; */
+
+/* font-family: 'Oswald', sans-serif !important; */
+
+/* font-family: 'Open Sans', sans-serif !important; */
+
+/* font-family: 'Open Sans Condensed', sans-serif !important; */
+
+/* font-family: 'Bree Serif', serif !important; */
+
+/* font-family: 'Passion One', cursive !important; */
+
+/* font-family: 'Bangers', cursive !important; */
+
+/* font-family: 'Fjalla One', sans-serif !important; */
+
+.navbar {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+body {
+    text-align: center !important;
+}
+
+#welcome {
+    height: 400px;
+    background-color: gainsboro;
+    font-family: 'Bangers', cursive !important;
+    font-size: 5em;
+}
+
+.topPicks {
+    font-size: 2em;
+    font-family: 'Passion One', cursive !important;
+}
+
+#moviesTV {
+    background-color: gainsboro;
+}
+
+.container-fluid {
+    padding-top: 5em;
+    overflow-wrap: normal;
+}
+
+.nowPlaying, .nowStreaming, .todaysTV, .bestofTV {
+    font-size: 2em;
+    font-family: 'Passion One', cursive !important;
+    text-decoration: underline;
+}
