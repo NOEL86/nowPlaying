@@ -20,6 +20,11 @@ var title = "Footloose";
 // var title = $("#input").val().trim();
 // var q = $("#input-2").val().trim();
 
+<<<<<<< HEAD
+=======
+    var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=Batman';
+    var q = "";
+>>>>>>> 73ea02f7420e23f607c83a603096300e28f89bdf
 
 $.ajax({
     url: "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&type=movie&" + apiKey,
@@ -37,9 +42,16 @@ $.ajax({
         console.log(errorThrown);
     }
 
+<<<<<<< HEAD
 }).then(function (response) {
     console.log(response);
 });
+=======
+    console.log(response);
+
+};
+
+>>>>>>> 73ea02f7420e23f607c83a603096300e28f89bdf
 
 $("#search-appears-here").append()
 
