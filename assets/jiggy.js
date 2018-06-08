@@ -24,8 +24,9 @@ function search() {
 
         var title = response.Title;
         var rating = response.Rated;
-        var reviewSource = response.Ratings[1].Source;
-        var reviewScore = response.Ratings[1].Value;
+        var imdbScore = response.Ratings[0].Source + ": " + response.Ratings[0].Value;
+        var rottenTomatoesScore = response.Ratings[1].Source + ": " + response.Ratings[1].Value;
+        var metaCrticScore = response.Ratings[2].Source + ": " + response.Ratings[2].Value;
         var cast = response.Actors;
         var synopsis = response.Plot;
         var poster = response.Poster;
@@ -33,8 +34,9 @@ function search() {
         newMovie = {
             title: title,
             rating: rating,
-            reviewSource: reviewSource,
-            reviewScore: reviewScore,
+            imdbScore: imdbScore,
+            rottenTomatoesScore: rottenTomatoesScore,
+            metaCrticScore: metaCrticScore,
             cast: cast,
             synopsis: synopsis,
             poster: poster,
@@ -61,7 +63,7 @@ $("#typeSearchButton").on("click", function (event) {
 });
 
 // Poster Function
-$("#devPicks").on("click", function (event) {
+$(".devPicks").on("click", function (event) {
     event.preventDefault();
 
     title = $(this).attr("data-name");
