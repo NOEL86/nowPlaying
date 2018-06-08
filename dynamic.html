@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </head>
 
 <body id="moviesTV">
@@ -54,17 +53,26 @@
 
     <div class="container">
         <div class="row my-4">
-            <div class="col-md-6 center">
-                <img class="img-fluid" src="http://placehold.it/300x400" alt="">
+            <div id="posterHolder" class="col-md-6 center">
+                <img id="poster" class="img-fluid" src="http://placehold.it/300x400" alt="">
             </div>
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body">
                         <h2 class="card-title center">Movie Title</h2>
-                        <p class="card-text">Rating: </p>
-                        <p class="card-text">Review Scores: </p>
-                        <p class="card-text">Cast: </p>
-                        <p class="card-text">synopsis: </p>
+                        <p class="card-text">Rating:
+                            <span id="rating"></span>
+                        </p>
+                        <p class="card-text">Review Scores:
+                            <span id="reviewScore"></span>
+                        </p>
+                        <p class="card-text">Cast:
+                            <span id="cast"></span>
+                        </p>
+                        <p class="card-text">synopsis:
+                            <span id="synopsis"></span>
+                        </p>
+
                     </div>
                     <div class="card-footer center">
                         <a href="#" class="btn btn-primary">Showtimes?</a>
@@ -74,7 +82,9 @@
         </div>
         <div class="card text-white bg-secondary my-4 text-center">
             <div class="card-body">
-                <p class="text-white m-0">Maybe the synopsis goes here?</p>
+
+                <p id="synopsis2" class="text-white m-0"></p>
+
             </div>
         </div>
         <div class="row">
@@ -99,6 +109,8 @@
         </div>
     </div>
 
+
+    <script src="assets/jiggy.js"></script>
 </body>
 
 </html>

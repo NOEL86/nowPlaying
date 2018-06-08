@@ -1,61 +1,92 @@
+var q = "footloose";
+var mUrl = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&type=movie&" + apiKey;
+var apiKey = "apikey=b9c0f031"
+var title = "footloose";
 
-$("#movie-search").on("click", function () {
-    search();
-});
+// $("#movie-search").on("click", function () {
+//     search();
+// });
 
-$("#tv-search").on("click", function () {
-    search();
-});
+// $("#tv-search").on("click", function () {
+//     search();
+// });
 
-$("#type-search").on("click", function () {
-    search();
-})
+// $("#typeSearchButton").on("click", function () {
+
+//     search();
+// })
 
 function search() {
+    // q = $("#typeSearch").val().trim();
+    // title = $("#typeSearch").val().trim();
 
-    var title = $("#input").val().trim();
-    var mUrl = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&" + apiKey
-    var apiKey = "apikey=b9c0f031"
-    var title = "";
+    // var title = $("#input").val().trim();
+    // var q = $("#input-2").val().trim();
+
+    // var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=Batman';
+    // var q = "";
 
     $.ajax({
-        url: "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&" + apiKey,
+        url: "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&type=movie&rating=&" + apiKey,
         method: "GET"
     }).then(function (response) {
         console.log(response);
-    })
 
-    var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=Batman';
-    var q = "";
+        $("#rating").append(response.Rated);
+        console.log(response.Rated);
 
-    $.ajax({
-        url: "https://www.youtube.com/embed?listType=search&list=QUERY",
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-    })
+        $("#reviewScore").append(response.Ratings[1].Source);
+        $("#reviewScore").append(response.Ratings[1].Value);
 
-    function init() {
-        gapi.client.setApiKey('AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0');
-        gapi.client.load("youtube", "v3", function () {
-        });
+        console.log(response.Ratings);
 
-    }
+        $("#cast").append(response.Actors);
+        console.log(response.Actors);
 
-    console.log(response);
+        $("#synopsis").append(response.Plot);
+        console.log(response.Plot)
+
+
+        $("#poster").attr("src", response.Poster);
+        console.log(response.Poster);
+
+
+        $("#synopsis2").append(response.Plot);
+
+
+
+    });
 
 };
 
+function getTrailer() {
+    var ytube = "AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0";
+
+    $.ajax({
+        url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${q}&trailer&type=video&key=${ytube}`,
+        method: "GET",
+
+        error: function (jqXHR, appendStatus, errorThrown) {
+            console.log(errorThrown);
+        }
 
 
-// Load the IFrame Player API code asynchronously.
+
+
+
+    });
+
+};
+
+search();
+getTrailer();
+
+
+//Load the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// Replace the 'ytplayer' element with an <iframe> and
-// YouTube player after the API code downloads.
 var player;
 function onYouTubePlayerAPIReady() {
     player = new YT.Player('ytplayer', {
@@ -64,6 +95,14 @@ function onYouTubePlayerAPIReady() {
         videoId: 'M7lc1UVf-VE'
     });
 }
+
+
+
+
+
+
+
+
 
 
 
