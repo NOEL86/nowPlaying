@@ -1,96 +1,76 @@
+var config = {
+    apiKey: "AIzaSyB_p0WIpiO2nbmIL2MWja2NLh9oiBaJ5d4",
+    authDomain: "now-playing-test.firebaseapp.com",
+    databaseURL: "https://now-playing-test.firebaseio.com",
+    projectId: "now-playing-test",
+    storageBucket: "now-playing-test.appspot.com",
+    messagingSenderId: "22833908007"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
 var q = "";
 var apiKey = "apikey=b9c0f031"
 var title = "";
 
-
-$("#devPicks").on("click", function () {
-    title = $(this).attr("data-name")
-    q = $(this).attr("data-name")
-    console.log(title);
-    search(title);
-    getTrailer(q);
-});
-
-$("#devPicks1").on("click", function () {
-    title = $(this).attr("data-name")
-    q = $(this).attr("data-name")
-    console.log(title);
-    search(title);
-    getTrailer(q);
-});
-
-$("#devPicks2").on("click", function () {
-    title = $(this).attr("data-name")
-    q = $(this).attr("data-name")
-    console.log(title);
-    search(title);
-    getTrailer(q);
-});
-
-$("#devPicks3").on("click", function () {
-    title = $(this).attr("data-name")
-    q = $(this).attr("data-name")
-    console.log(title);
-    search(title);
-    getTrailer(q);
-});
-
-$("#devPicks4").on("click", function () {
-    title = $(this).attr("data-name")
-    q = $(this).attr("data-name")
-    console.log(title);
-    search(title);
-    getTrailer(q);
-});
-
-$("#devPicks5").on("click", function () {
-    title = $(this).attr("data-name")
-    q = $(this).attr("data-name")
-    console.log(title);
-    search(title);
-    getTrailer(q);
-});
-
-$("#typeSearchButton").on("click", function (event) {
-    event.preventDefault();
-    q = $("#typeSearch").val().trim();
-    title = $("#typeSearch").val().trim();
-    search(title);
-    getTrailer(q);
-    $("#typeSearch").val("");
-});
-
-function search(title) {
+function search() {
 
     $.ajax({
-        url: `http://www.omdbapi.com/?t=${title}&y=&plot=short&type=movie&rating=&${apiKey}`,
+        url: "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&type=movie&rating=&" + apiKey,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
 
-        $("#rating").append(response.Rated);
-        console.log(response.Rated);
+        var title = response.Title;
+        var rating = response.Rated;
+        var reviewSource = response.Ratings[1].Source;
+        var reviewScore = response.Ratings[1].Value;
+        var cast = response.Actors;
+        var synopsis = response.Plot;
+        var poster = response.Poster;
 
-        $("#reviewScore").append(response.Ratings[1].Source);
-        $("#reviewScore").append(response.Ratings[1].Value);
+        newMovie = {
+            title: title,
+            rating: rating,
+            reviewSource: reviewSource,
+            reviewScore: reviewScore,
+            cast: cast,
+            synopsis: synopsis,
+            poster: poster,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        };
 
-        console.log(response.Ratings);
+        console.log(newMovie);
 
-        $("#cast").append(response.Actors);
-        console.log(response.Actors);
-
-        $("#synopsis").append(response.Plot);
-        console.log(response.Plot)
-
-        $("#poster").attr("src", response.Poster);
-        console.log(response.Poster);
-
-        $("#synopsis2").append(response.Plot);
-
+        database.ref().push(newMovie);
 
     });
 
 };
+
+// Search Button Function
+$("#typeSearchButton").on("click", function (event) {
+    event.preventDefault();
+    q = $("#typeSearch").val().trim();
+    title = $("#typeSearch").val().trim();
+    search();
+    getTrailer();
+    $("#typeSearch").val("");
+
+});
+
+// Poster Function
+$("#devPicks").on("click", function (event) {
+    event.preventDefault();
+
+    title = $(this).attr("data-name");
+    q = $(this).attr("data-name")
+
+    search();
+    getTrailer();
+
+});
 
 function getTrailer(q) {
     var ytube = "AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0";
@@ -123,9 +103,6 @@ function onYouTubePlayerAPIReady() {
 
 
 };
-
-
-
 
 
  // function movieWithMultipleWords(movie) {
