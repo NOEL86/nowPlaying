@@ -54,11 +54,16 @@ function search() {
 // Search Button Function
 $("#typeSearchButton").on("click", function (event) {
     event.preventDefault();
+    
     q = $("#typeSearch").val().trim();
     title = $("#typeSearch").val().trim();
+
+    $("#typeSearch").val("");
+    
     search();
     getTrailer();
-    $("#typeSearch").val("");
+
+    window.open('dynamic.html', '_self');
 
 });
 
@@ -71,6 +76,8 @@ $(".devPicks").on("click", function (event) {
 
     search();
     getTrailer();
+
+    window.open('dynamic.html', '_self');
 
 });
 
