@@ -1,33 +1,69 @@
-var q = "footloose";
-var mUrl = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&type=movie&" + apiKey;
+var q = "";
 var apiKey = "apikey=b9c0f031"
-var title = "footloose";
+var title = "";
 
-// $("#movie-search").on("click", function () {
-//     search();
-// });
 
-// $("#tv-search").on("click", function () {
-//     search();
-// });
+$("#devPicks").on("click", function () {
+    title = $(this).attr("data-name")
+    q = $(this).attr("data-name")
+    console.log(title);
+    search(title);
+    getTrailer(q);
+});
 
-// $("#typeSearchButton").on("click", function () {
+$("#devPicks1").on("click", function () {
+    title = $(this).attr("data-name")
+    q = $(this).attr("data-name")
+    console.log(title);
+    search(title);
+    getTrailer(q);
+});
 
-//     search();
-// })
+$("#devPicks2").on("click", function () {
+    title = $(this).attr("data-name")
+    q = $(this).attr("data-name")
+    console.log(title);
+    search(title);
+    getTrailer(q);
+});
 
-function search() {
-    // q = $("#typeSearch").val().trim();
-    // title = $("#typeSearch").val().trim();
+$("#devPicks3").on("click", function () {
+    title = $(this).attr("data-name")
+    q = $(this).attr("data-name")
+    console.log(title);
+    search(title);
+    getTrailer(q);
+});
 
-    // var title = $("#input").val().trim();
-    // var q = $("#input-2").val().trim();
+$("#devPicks4").on("click", function () {
+    title = $(this).attr("data-name")
+    q = $(this).attr("data-name")
+    console.log(title);
+    search(title);
+    getTrailer(q);
+});
 
-    // var DRIVE_UPLOAD_URL = 'https://www.youtube.com/embed?listType=search&list=Batman';
-    // var q = "";
+$("#devPicks5").on("click", function () {
+    title = $(this).attr("data-name")
+    q = $(this).attr("data-name")
+    console.log(title);
+    search(title);
+    getTrailer(q);
+});
+
+$("#typeSearchButton").on("click", function (event) {
+    event.preventDefault();
+    q = $("#typeSearch").val().trim();
+    title = $("#typeSearch").val().trim();
+    search(title);
+    getTrailer(q);
+    $("#typeSearch").val("");
+});
+
+function search(title) {
 
     $.ajax({
-        url: "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&type=movie&rating=&" + apiKey,
+        url: `http://www.omdbapi.com/?t=${title}&y=&plot=short&type=movie&rating=&${apiKey}`,
         method: "GET"
     }).then(function (response) {
         console.log(response);
@@ -46,20 +82,17 @@ function search() {
         $("#synopsis").append(response.Plot);
         console.log(response.Plot)
 
-
         $("#poster").attr("src", response.Poster);
         console.log(response.Poster);
 
-
         $("#synopsis2").append(response.Plot);
-
 
 
     });
 
 };
 
-function getTrailer() {
+function getTrailer(q) {
     var ytube = "AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0";
 
     $.ajax({
@@ -71,16 +104,9 @@ function getTrailer() {
         }
 
 
-
-
-
     });
 
 };
-
-search();
-getTrailer();
-
 
 //Load the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -94,13 +120,35 @@ function onYouTubePlayerAPIReady() {
         width: '640',
         videoId: 'M7lc1UVf-VE'
     });
-}
+
+
+};
 
 
 
 
 
+ // function movieWithMultipleWords(movie) {
+    //     var movieName = "";
+    //     var movieArray = movie.split(" ");
 
+    //     for (var i = 0; i < movieArray.length; i++) {
+
+    //         if (i > 0 && i < movieArray.length) {
+
+    //             movieName = movieName + "+" + movieArray[i];
+
+    //         }
+
+    //         else {
+
+    //             movieName += movieArray[i];
+
+    //         }
+    //     }
+    //     return movieName
+
+    // }
 
 
 
