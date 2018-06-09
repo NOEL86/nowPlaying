@@ -14,6 +14,32 @@ var database = firebase.database();
 var q = "";
 var apiKey = "apikey=b9c0f031"
 var title = "";
+// var tv = "";
+// var movies = "";
+
+$(document).ready(function movieTvList() {
+    var APIKeyMovie = "6364491e63695bac0f912490a6a5a3d8";
+    var queryURL = "https://api.themoviedb.org/3/tv/popular?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
+    var queryURL = "https://api.themoviedb.org/3/movie/popular?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(queryURL);
+        console.log(response);
+
+        $("#mOne").append(response.results[0].original_title);
+        console.log(response.results[0].original_title);
+    });
+
+
+
+
+
+});
+
 
 function dynamic() {
     window.open('dynamic.html', '_self');
@@ -81,6 +107,8 @@ $(".devPicks").on("click", function (event) {
 
 });
 
+
+
 function getTrailer(q) {
     var ytube = "AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0";
 
@@ -109,7 +137,6 @@ function onYouTubePlayerAPIReady() {
         width: '640',
         videoId: 'M7lc1UVf-VE'
     });
-
 
 };
 
