@@ -17,32 +17,8 @@ var title = "";
 // var tv = "";
 // var movies = "";
 
-$(document).ready(function movieTvList() {
-    var APIKeyMovie = "6364491e63695bac0f912490a6a5a3d8";
-    var queryURL = "https://api.themoviedb.org/3/tv/popular?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
-    var queryURL = "https://api.themoviedb.org/3/movie/popular?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-
-        console.log(queryURL);
-        console.log(response);
-
-        $("#mOne").append(response.results[0].original_title);
-        console.log(response.results[0].original_title);
-    });
-
-
-
-
-
-});
-
-
 function dynamic() {
-    window.open('dynamic.html', '_self');
+    window.open('dynamic.html', '_target'); //self to target
 };
 
 function search() {
@@ -76,20 +52,89 @@ function search() {
         console.log(newMovie);
 
         database.ref().push(newMovie);
-
         dynamic();
 
     });
 
 };
 
+function movieList() {
+
+    var queryURL = "https://api.themoviedb.org/3/movie/popular?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1&append_to_response=now_playing";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(queryURL);
+        console.log(response);
+
+        for (i = 0; i < 15; i++) {
+            var responseTitle = response.results[i].original_title;
+            var id = "movie" + i;
+            var listID = '<a href="dynamic.html"><li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li></a>';
+
+            console.log(listID);
+
+            if (response.results[i].original_language == "en") {
+                $(".movieList").append(listID);
+            };
+
+        };
+
+    });
+};
+
+
+function tvList() {
+    var APIKeyMovie = "6364491e63695bac0f912490a6a5a3d8";
+    var queryURL = "https://api.themoviedb.org/3/tv/on_the_air?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1&append_to_response=popular";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(queryURL);
+        console.log(response);
+
+
+        for (i = 0; i < 15; i++) {
+            response.results[i].original_name;
+            var id = "tv" + i;
+            var listID = '<li id="' + id + '" class="listLink">' + response.results[i].original_name + '</li></a>';
+
+            if (response.results[i].origin_country == "US") {
+                $(".tvList").append(listID);
+            };
+        };
+
+    });
+};
+
+$(".linkLink").on("click", function (event) {
+    event.preventDefault();
+    title = $(this).attr("data-name");
+    q = $(this).attr("data-name");
+
+    search();
+    // getTrailer();
+
+});
+
+$(window).on('load', function () {
+    tvList();
+    movieList();
+});
+
 // Search Button Function
 $("#typeSearchButton").on("click", function (event) {
     event.preventDefault();
-    
+
     title = $("#typeSearch").val().trim();
-    q = $("#typeSearch").val().trim(); 
-    
+    q = $("#typeSearch").val().trim();
+
     search();
     getTrailer();
 
