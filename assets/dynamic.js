@@ -78,6 +78,27 @@ $(window).on('load', function () {
         $("#synopsis").append(synopsis);
         $("#poster").attr("src", poster);
 
+        function getTrailer() {
+            var ytube = "AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0";
+
+            $.ajax({
+                url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${title}trailer&type=video&key=${ytube}`,
+                method: "GET",
+
+            }).then(function (response) {
+                console.log(response);
+
+                var itemNumber = 0;
+
+                $("#ytPlayer").append("<iframe id=\"player\" type\"text/html\" width=\"100%\" height=\"350px\" src=\"\" frameborder=\"0\"></iframe>");
+                //button for next possibly
+                $("#player").attr('src', "https://www.youtube.com/embed/" + response.items[0].id.videoId + "?autoplay=1")
+            });
+
+        };
+        getTrailer();
+
+
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
@@ -98,37 +119,6 @@ $("#dynamicSearchButton").on("click", function (event) {
 
 });
 
-function getTrailer(q) {
-    var ytube = "AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0";
-
-    $.ajax({
-        url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${q}&trailer&type=video&key=${ytube}`,
-        method: "GET",
-
-        error: function (jqXHR, appendStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-
-
-    });
-
-};
-
-//Load the IFrame Player API code asynchronously.
-// var tag = document.createElement('script');
-// tag.src = "https://www.youtube.com/player_api";
-// var firstScriptTag = document.getElementsByTagName('script')[0];
-// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-// var player;
-// function onYouTubePlayerAPIReady() {
-//     player = new YT.Player('ytplayer', {
-//         height: '360',
-//         width: '640',
-//         videoId: 'M7lc1UVf-VE'
-//     });
-
-
-// };
 
 
 

@@ -18,7 +18,7 @@ var title = "";
 // var movies = "";
 
 function dynamic() {
-    window.open('dynamic.html', '_target'); //self to target
+    window.open('dynamic.html', '_self');
 };
 
 function search() {
@@ -52,6 +52,7 @@ function search() {
         console.log(newMovie);
 
         database.ref().push(newMovie);
+
         dynamic();
 
     });
@@ -73,7 +74,7 @@ function movieList() {
         for (i = 0; i < 15; i++) {
             var responseTitle = response.results[i].original_title;
             var id = "movie" + i;
-            var listID = '<a href="dynamic.html"><li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li></a>';
+            var listID = '<li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
 
             console.log(listID);
 
@@ -82,6 +83,16 @@ function movieList() {
             };
 
         };
+
+        // List Link Function
+        $(".listLink").on("click", function (event) {
+            event.preventDefault();
+            title = $(this).attr("data-name");
+            q = $(this).attr("data-name");
+
+            search();
+
+        });
 
     });
 };
@@ -101,32 +112,35 @@ function tvList() {
 
 
         for (i = 0; i < 15; i++) {
-            response.results[i].original_name;
+            var responseTitle = response.results[i].original_name;
             var id = "tv" + i;
-            var listID = '<li id="' + id + '" class="listLink">' + response.results[i].original_name + '</li></a>';
+            var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li></a>';
 
             if (response.results[i].origin_country == "US") {
                 $(".tvList").append(listID);
+
+                
             };
         };
 
+        // List Link Function
+        // $(".listLink").on("click", function (event) {
+        //     event.preventDefault();
+        //     title = $(this).attr("data-name");
+        //     q = $(this).attr("data-name");
+
+        //     search();
+
+        // });
+
     });
 };
-
-$(".linkLink").on("click", function (event) {
-    event.preventDefault();
-    title = $(this).attr("data-name");
-    q = $(this).attr("data-name");
-
-    search();
-    // getTrailer();
-
-});
 
 $(window).on('load', function () {
     tvList();
     movieList();
 });
+
 
 // Search Button Function
 $("#typeSearchButton").on("click", function (event) {
@@ -136,7 +150,6 @@ $("#typeSearchButton").on("click", function (event) {
     q = $("#typeSearch").val().trim();
 
     search();
-    getTrailer();
 
 });
 
@@ -148,65 +161,8 @@ $(".devPicks").on("click", function (event) {
     q = $(this).attr("data-name")
 
     search();
-    getTrailer();
 
 });
-
-
-
-function getTrailer(q) {
-    var ytube = "AIzaSyAgdHAGfQ-cKmJhT-WqMdG8gv3MKVXRNP0";
-
-    $.ajax({
-        url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${q}&trailer&type=video&key=${ytube}`,
-        method: "GET",
-
-        error: function (jqXHR, appendStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-
-
-    });
-
-};
-
-//Load the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-var player;
-function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-        height: '360',
-        width: '640',
-        videoId: 'M7lc1UVf-VE'
-    });
-
-};
-
-
- // function movieWithMultipleWords(movie) {
-    //     var movieName = "";
-    //     var movieArray = movie.split(" ");
-
-    //     for (var i = 0; i < movieArray.length; i++) {
-
-    //         if (i > 0 && i < movieArray.length) {
-
-    //             movieName = movieName + "+" + movieArray[i];
-
-    //         }
-
-    //         else {
-
-    //             movieName += movieArray[i];
-
-    //         }
-    //     }
-    //     return movieName
-
-    // }
 
 
 
