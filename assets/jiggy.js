@@ -41,6 +41,10 @@ $(document).ready(function movieTvList() {
 });
 
 
+function dynamic() {
+    window.open('dynamic.html', '_self');
+};
+
 function search() {
 
     $.ajax({
@@ -73,6 +77,8 @@ function search() {
 
         database.ref().push(newMovie);
 
+        dynamic();
+
     });
 
 };
@@ -80,16 +86,12 @@ function search() {
 // Search Button Function
 $("#typeSearchButton").on("click", function (event) {
     event.preventDefault();
-
-    q = $("#typeSearch").val().trim();
+    
     title = $("#typeSearch").val().trim();
-
-    $("#typeSearch").val("");
-
+    q = $("#typeSearch").val().trim(); 
+    
     search();
     getTrailer();
-
-    window.open('dynamic.html', '_self');
 
 });
 
@@ -102,8 +104,6 @@ $(".devPicks").on("click", function (event) {
 
     search();
     getTrailer();
-
-    window.open('dynamic.html', '_self');
 
 });
 
