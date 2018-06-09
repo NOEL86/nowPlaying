@@ -15,6 +15,10 @@ var q = "";
 var apiKey = "apikey=b9c0f031"
 var title = "";
 
+function dynamic() {
+    window.open('dynamic.html', '_self');
+};
+
 function search() {
 
     $.ajax({
@@ -47,6 +51,8 @@ function search() {
 
         database.ref().push(newMovie);
 
+        dynamic();
+
     });
 
 };
@@ -55,15 +61,11 @@ function search() {
 $("#typeSearchButton").on("click", function (event) {
     event.preventDefault();
     
-    q = $("#typeSearch").val().trim();
     title = $("#typeSearch").val().trim();
-
-    $("#typeSearch").val("");
+    q = $("#typeSearch").val().trim(); 
     
     search();
     getTrailer();
-
-    window.open('dynamic.html', '_self');
 
 });
 
@@ -76,8 +78,6 @@ $(".devPicks").on("click", function (event) {
 
     search();
     getTrailer();
-
-    window.open('dynamic.html', '_self');
 
 });
 
