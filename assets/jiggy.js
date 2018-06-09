@@ -139,4 +139,29 @@ function onYouTubePlayerAPIReady() {
 
 
 
+    var APIKeyMovie = "6364491e63695bac0f912490a6a5a3d8";
+    var queryURL = "https://api.themoviedb.org/3/tv/popular?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1&minLength:2";
+    
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+    
+        .then(function(response) {
+    
+ 
+        console.log(queryURL);
+    
+   
+        console.log(response);
+    
+    
+    
+    
+    });
 
+
+    
+    
+    
+    
