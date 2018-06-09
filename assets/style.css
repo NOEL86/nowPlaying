@@ -24,7 +24,7 @@
 }
 
 #welcome {
-    height: 400px;
+    height: 250px;
     background-color: gainsboro;
     font-family: 'Bangers', cursive !important;
     font-size: 5em;
@@ -33,6 +33,11 @@
 .topPicks {
     font-size: 2em;
     font-family: 'Passion One', cursive !important;
+}
+
+.devPicks {
+    max-width: 238px;
+    max-height: 349px;
 }
 
 #moviesTV {
