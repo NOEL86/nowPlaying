@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input id="typeSearch" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button id="typeSearchButton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <a href="dynamic.html"><button id="typeSearchButton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></a>
             </form>
         </div>
     </nav>
@@ -59,17 +60,30 @@
             Check Out Our Developers' Top Picks!
         </div>
         <div id="test" class="card-body">
-            <img class="card-img-top" id="devPicks" data-name="Lord of the Rings" src="assets/images/lotr.jpg" style="width: 15%; height: 15%;"
-                alt="Lord of the Rings">
-            <img class="card-img-top" id="devPicks1" data-name="Remember the Titans" src="assets/images/remember-the-titans.jpg" style="width: 15%; height: 15%;"
-                alt="Remember the Titans">
-            <img class="card-img-top" id="devPicks2" data-name="Pretty Woman" src="assets/images/pretty-woman.jpg" style="width: 15%; height: 15%;"
-                alt="Pretty Woman">
-            <img class="card-img-top" id="devPicks3" data-name="Die Hard" src="assets/images/die-hard.jpg" style="width: 15%; height: 15%;"
-                alt="Die Hard">
-            <img class="card-img-top" id="devPicks4" data-name="Big" src="assets/images/big.jpg" style="width: 15%; height: 15%;" alt="Big">
-            <img class="card-img-top" id="devPicks5" data-name="Django Unchained" src="assets/images/django.jpg" style="width: 15%; height: 15%;"
-                alt="Django">
+            <a href="dynamic.html">
+                <img class="card-img-top devPicks" data-name="Lord of the Rings" src="assets/images/lotr.jpg" style="width: 15%; height: 15%;"
+                    alt="Lord of the Rings" />
+            </a>
+            <a href="dynamic.html">
+                <img class="card-img-top devPicks" data-name="Remember the Titans" src="assets/images/remember-the-titans.jpg" style="width: 15%; height: 15%;"
+                    alt="Remember the Titans" />
+            </a>
+            <a href="dynamic.html">
+                <img class="card-img-top devPicks" data-name="Pretty Woman" src="assets/images/pretty-woman.jpg" style="width: 15%; height: 15%;"
+                    alt="Pretty Woman" />
+            </a>
+            <a href="dynamic.html">
+                <img class="card-img-top devPicks" data-name="Die Hard" src="assets/images/die-hard.jpg" style="width: 15%; height: 15%;"
+                    alt="Die Hard" />
+            </a>
+            <a href="dynamic.html">
+                <img class="card-img-top devPicks" data-name="Big" src="assets/images/big.jpg" style="width: 15%; height: 15%;" alt="Big"
+                />
+            </a>
+            <a href="dynamic.html">
+                <img class="card-img-top devPicks" data-name="Django Unchained" src="assets/images/django.jpg" style="width: 15%; height: 15%;"
+                    alt="Django" />
+            </a>
         </div>
 
 
