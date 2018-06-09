@@ -108,6 +108,26 @@ function getTrailer(q) {
 
 };
 
+database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+
+
+
+
+
+
+
+
+
+}, function (errorObject) {
+
+    console.log("Errors handled: " + errorObject.code);
+});
+
+
+
+
+
+
 //Load the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
