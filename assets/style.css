@@ -59,6 +59,10 @@ body {
     padding: 0px 0px 0px 0px !important;
 }
 
+.listLink{
+    list-style: none !important;
+}
+
 .movieMenu {
     background-image: url(images/movie-menu-white.jpg);
     background-size: cover;
