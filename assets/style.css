@@ -19,16 +19,16 @@ body {
     background-color: #0e222f !important;
 }
 
+.background {
+    background-color: #0e222f !important;
+}
+
 .navbar {
     font-family: 'Open Sans', sans-serif !important;
 }
 
 .center {
     text-align: center !important;
-}
-
-.d-flex {
-    background-color: #0e222f !important;
 }
 
 #welcome {
@@ -59,7 +59,7 @@ body {
     padding: 0px 0px 0px 0px !important;
 }
 
-.listLink{
+.listLink {
     list-style: none !important;
 }
 
