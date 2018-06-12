@@ -11,11 +11,10 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var q = "";
+
 var apiKey = "apikey=b9c0f031"
 var title = "";
-// var tv = "";
-// var movies = "";
+
 
 function dynamic() {
     window.open('dynamic.html', '_self');
@@ -50,9 +49,7 @@ function search() {
         };
 
         console.log(newMovie);
-
         database.ref().push(newMovie);
-
         dynamic();
 
     });
@@ -71,11 +68,10 @@ function movieList() {
         console.log(queryURL);
         console.log(response);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 10; i++) {
             var responseTitle = response.results[i].original_title;
             var id = "movie" + i;
             var listID = '<li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
-
             console.log(listID);
 
             if (response.results[i].original_language == "en") {
@@ -88,8 +84,6 @@ function movieList() {
         $(".listLink").on("click", function (event) {
             event.preventDefault();
             title = $(this).attr("data-name");
-            q = $(this).attr("data-name");
-
             search();
 
         });
@@ -119,22 +113,19 @@ function tvList() {
             if (response.results[i].origin_country == "US") {
                 $(".tvList").append(listID);
 
-                
             };
+
+            $(".listLink").on("click", function (event) {
+                event.preventDefault();
+                title = $(this).attr("data-name");
+                search();
+
+            });
         };
-
-        // List Link Function
-        // $(".listLink").on("click", function (event) {
-        //     event.preventDefault();
-        //     title = $(this).attr("data-name");
-        //     q = $(this).attr("data-name");
-
-        //     search();
-
-        // });
-
     });
 };
+
+
 
 $(window).on('load', function () {
     tvList();
@@ -145,23 +136,15 @@ $(window).on('load', function () {
 // Search Button Function
 $("#typeSearchButton").on("click", function (event) {
     event.preventDefault();
-
     title = $("#typeSearch").val().trim();
-    q = $("#typeSearch").val().trim();
-
     search();
-
 });
 
 // Poster Function
 $(".devPicks").on("click", function (event) {
     event.preventDefault();
-
     title = $(this).attr("data-name");
-    q = $(this).attr("data-name")
-
     search();
-
 });
 
 
