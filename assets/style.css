@@ -15,6 +15,10 @@
 
 /* font-family: 'Fjalla One', sans-serif !important; */
 
+body {
+    background-color: #0e222f !important;
+}
+
 .navbar {
     font-family: 'Open Sans', sans-serif !important;
 }
@@ -23,9 +27,13 @@
     text-align: center !important;
 }
 
+.d-flex {
+    background-color: #0e222f !important;
+}
+
 #welcome {
     height: 250px;
-    background-color: gainsboro;
+    color: white;
     font-family: 'Bangers', cursive !important;
     font-size: 5em;
 }
@@ -40,8 +48,25 @@
     max-height: 349px;
 }
 
-#moviesTV {
-    background-color: gainsboro;
+.container-fluid {
+    padding-top: 2em !important;
+}
+
+.tvMenu {
+    background-image: url(images/tv-menu-white.jpg);
+    background-size: cover;
+    min-height: 320px;
+    padding: 0px 0px 0px 0px !important;
+}
+
+.listLink{
+    list-style: none !important;
+}
+
+.movieMenu {
+    background-image: url(images/movie-menu-white.jpg);
+    background-size: cover;
+    min-height: 320px;
 }
 
 .container-fluid {
@@ -53,4 +78,13 @@
     font-size: 2em;
     font-family: 'Passion One', cursive !important;
     text-decoration: underline;
+}
+
+#posterHolder {
+    min-height: 445px;
+    min-width: 300px;
+}
+
+#title {
+    font-size: 24px;
 }
