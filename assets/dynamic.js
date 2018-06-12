@@ -13,6 +13,7 @@ var database = firebase.database();
 var apiKey = "apikey=b9c0f031"
 var title = "";
 var id = 0;
+
 $(window).on('load', function () {
 
     function search() {
@@ -30,7 +31,6 @@ $(window).on('load', function () {
             var cast = response.Actors;
             var synopsis = response.Plot;
             var poster = response.Poster;
-            var id = response.results[0].id;
 
             newMovie = {
                 title: title,
@@ -108,30 +108,6 @@ $(window).on('load', function () {
         getTrailer();
         similarMovies();
 
-        function similarMovies() {
-            var queryURL = `https://api.themoviedb.org/3/movie/{movie_${id}}/similar?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1`;
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-
-                console.log(queryURL);
-                console.log(response);
-
-                for (i = 0; i < 3; i++) {
-                    var responseTitle = response.results[i].original_title;
-                    var id = "movie" + i;
-                    var similarID = '<li id="' + id + '" class="listID" data-name="' + responseTitle + '">' + responseTitle + '</li>';
-                    console.log(listID);
-
-                    if (response.results[i].original_language == "en") {
-                        $(".Similar").append(similarID);
-                    };
-
-                };
-            });
-        };
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
@@ -147,13 +123,44 @@ $(window).on('load', function () {
 
     });
 
+    function similarMovies() {
+        var queryURL = `https://api.themoviedb.org/3/search/movie?language=en-US&query=${title}&page=1&include_adult=false&api_key=6364491e63695bac0f912490a6a5a3d8`;
 
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+
+            var id = response.results[0].id;
+
+            var queryURL2 = `https://api.themoviedb.org/3/movie/language=en-US&{movie_${id}}/similar?page=1&include_adult=false&api_key=6364491e63695bac0f912490a6a5a3d8`;
+            $.ajax({
+                url: queryURL2,
+                method: "GET"
+            }).then(function (results) {
+
+
+                console.log(results);
+
+                // for (i = 0; i < 3; i++) {
+                //     var responseTitle = response.results[i].original_title;
+                //     var id = "movie" + i;
+                //     var similarID = '<li id="' + id + '" class="listID" data-name="' + responseTitle + '">' + responseTitle + '</li>';
+                //     console.log(listID);
+
+                //     if (response.results[i].original_language == "en") {
+                //         $(".Similar").append(similarID);
+                //     };
+
+                // };
+
+            });
+
+        });
+    };
 
 });
-
-
-
-
 
 
 
