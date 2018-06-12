@@ -131,7 +131,7 @@ function tvList() {
         for (i = 0; i < 15; i++) {
             var responseTitle = response.results[i].original_name;
             var id = "tv" + i;
-            var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li></a>';
+            var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li>';
 
             if (response.results[i].origin_country == "US") {
                 $(".tvList").append(listID);
