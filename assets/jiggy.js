@@ -140,40 +140,40 @@ function tvList() {
 
 
         };
-    });
 
-    var queryURL2 = "https://api.themoviedb.org/3/tv/top_rated?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
 
-    $.ajax({
-        url: queryURL2,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
+        var queryURL2 = "https://api.themoviedb.org/3/tv/top_rated?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
 
-        for (i = 0; i < 15; i++) {
-            var responseTitle = response.results[i].original_name;
-            var id = "tv" + i;
-            var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li></a>';
+        $.ajax({
+            url: queryURL2,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
 
-            if (response.results[i].origin_country == "US") {
-                $(".tvTopRated").append(listID);
+            for (i = 0; i < 15; i++) {
+                var responseTitle = response.results[i].original_name;
+                var id = "tv" + i;
+                var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li></a>';
+
+                if (response.results[i].origin_country == "US") {
+                    $(".tvTopRated").append(listID);
+
+                };
+
 
             };
 
+            $(".listLink").on("click", function (event) {
+                event.preventDefault();
+                title = $(this).attr("data-name");
+                search();
 
-        };
-
-        $(".listLink").on("click", function (event) {
-            event.preventDefault();
-            title = $(this).attr("data-name");
-            search();
-
+            });
         });
 
 
     });
 };
-
 
 
 $(window).on('load', function () {
