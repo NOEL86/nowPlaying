@@ -41,6 +41,10 @@ $(window).on('load', function () {
                 cast: cast,
                 synopsis: synopsis,
                 poster: poster,
+<<<<<<< HEAD
+=======
+                // id: id,
+>>>>>>> master
                 dateAdded: firebase.database.ServerValue.TIMESTAMP
             };
 
@@ -48,7 +52,8 @@ $(window).on('load', function () {
 
             database.ref().push(newMovie);
             getTrailer();
-            similarMovies();
+            // similarMovies();
+
         });
 
     };
@@ -72,7 +77,7 @@ $(window).on('load', function () {
         cast = snapshot.val().cast;
         synopsis = snapshot.val().synopsis;
         poster = snapshot.val().poster;
-        id = snapshot.val().id;
+        // id = snapshot.val().id;
 
         $("#title").append(title);
         $("#rating").append(rating);
@@ -80,6 +85,8 @@ $(window).on('load', function () {
         $("#cast").append(cast);
         $("#synopsis").append(synopsis);
         $("#poster").attr("src", poster);
+
+
 
 
         function getTrailer() {
@@ -105,13 +112,11 @@ $(window).on('load', function () {
         };
 
         getTrailer();
-        similarMovies();
+        // similarMovies();
 
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
-
-
 
     // Search Button Function
     $("#dynamicSearchButton").on("click", function (event) {
@@ -122,6 +127,8 @@ $(window).on('load', function () {
         $("#dynamicSearch").val("");
 
     });
+
+
 
     function similarMovies() {
         var queryURL = `https://api.themoviedb.org/3/search/movie?language=en-US&query=${title}&page=1&include_adult=false&api_key=6364491e63695bac0f912490a6a5a3d8`;

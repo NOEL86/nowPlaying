@@ -74,7 +74,7 @@ function movieList() {
             var listID = '<li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
             console.log(listID);
 
-            if (response.results[i].original_language == "en") {
+            if (response.results[i].original_language == "en" && i < 10) {
                 $(".movieList").append(listID);
             };
 
@@ -94,7 +94,7 @@ function movieList() {
                 var listID = '<li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
                 console.log(listID);
 
-                if (response.results[i].original_language == "en") {
+                if (response.results[i].original_language == "en" && i <= 10) {
                     $(".topRated").append(listID);
                 };
 
@@ -133,47 +133,43 @@ function tvList() {
             var id = "tv" + i;
             var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li>';
 
-            if (response.results[i].origin_country == "US") {
+            if (response.results[i].origin_country == "US" && i <= 10) {
                 $(".tvList").append(listID);
 
             };
-
-
         };
-    });
 
-    var queryURL2 = "https://api.themoviedb.org/3/tv/top_rated?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
+        var queryURL2 = "https://api.themoviedb.org/3/tv/top_rated?api_key=6364491e63695bac0f912490a6a5a3d8&language=en-US&page=1";
 
-    $.ajax({
-        url: queryURL2,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
+        $.ajax({
+            url: queryURL2,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
 
-        for (i = 0; i < 15; i++) {
-            var responseTitle = response.results[i].original_name;
-            var id = "tv" + i;
-            var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li></a>';
+            for (i = 0; i < 15; i++) {
+                var responseTitle = response.results[i].original_name;
+                var id = "tv" + i;
+                var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li></a>';
 
-            if (response.results[i].origin_country == "US") {
-                $(".tvTopRated").append(listID);
+                if (response.results[i].origin_country == "US" && i <= 10) {
+                    $(".tvTopRated").append(listID);
+
+                };
+
 
             };
 
+            $(".listLink").on("click", function (event) {
+                event.preventDefault();
+                title = $(this).attr("data-name");
+                search();
 
-        };
-
-        $(".listLink").on("click", function (event) {
-            event.preventDefault();
-            title = $(this).attr("data-name");
-            search();
-
+            });
         });
-
 
     });
 };
-
 
 
 $(window).on('load', function () {
