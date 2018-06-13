@@ -41,7 +41,10 @@ $(window).on('load', function () {
                 cast: cast,
                 synopsis: synopsis,
                 poster: poster,
+<<<<<<< HEAD
+=======
                 // id: id,
+>>>>>>> master
                 dateAdded: firebase.database.ServerValue.TIMESTAMP
             };
 
@@ -119,6 +122,7 @@ $(window).on('load', function () {
     $("#dynamicSearchButton").on("click", function (event) {
         event.preventDefault();
         title = $("#dynamicSearch").val().trim();
+        console.log(title);
         search();
         $("#dynamicSearch").val("");
 
