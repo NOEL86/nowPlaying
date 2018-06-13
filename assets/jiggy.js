@@ -37,6 +37,7 @@ function search() {
         var cast = response.Actors;
         var synopsis = response.Plot;
         var poster = response.Poster;
+        var id = response.imdbID;
 
         newMovie = {
             title: title,
@@ -49,11 +50,12 @@ function search() {
             cast: cast,
             synopsis: synopsis,
             poster: poster,
-            // id: id,
+            id: id,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         };
 
-        console.log(newMovie);
+        console.log(response);
+
         database.ref().push(newMovie);
         dynamic();
 
