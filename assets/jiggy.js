@@ -54,8 +54,6 @@ function search() {
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         };
 
-        console.log(response);
-
         database.ref().push(newMovie);
         dynamic();
 
@@ -72,14 +70,10 @@ function movieList() {
         method: "GET"
     }).then(function (response) {
 
-        console.log(queryURL);
-        console.log(response);
-
         for (i = 0; i < 15; i++) {
             var responseTitle = response.results[i].original_title;
             var id = "movie" + i;
-            var listID = '<li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
-            console.log(listID);
+            var listID = '<li id="' + id + '" class="movieLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
 
             if (response.results[i].original_language == "en" && i < 10) {
                 $(".movieList").append(listID);
@@ -93,15 +87,13 @@ function movieList() {
             url: queryURL2,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
 
             for (i = 0; i < 15; i++) {
                 var responseTitle = response.results[i].original_title;
                 var id = "movie" + i;
-                var listID = '<li id="' + id + '" class="listLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
-                console.log(listID);
+                var listID = '<li id="' + id + '" class="movieLink" data-name="' + responseTitle + '">' + responseTitle + '</li>';
 
-                if (response.results[i].original_language == "en" && i <= 10) {
+                if (response.results[i].original_language == "en") {
                     $(".topRated").append(listID);
                 };
 
@@ -109,7 +101,7 @@ function movieList() {
             };
 
             // List Link Function
-            $(".listLink").on("click", function (event) {
+            $(".movieLink").on("click", function (event) {
                 event.preventDefault();
                 title = $(this).attr("data-name");
                 search();
@@ -131,16 +123,13 @@ function tvList() {
         method: "GET"
     }).then(function (response) {
 
-        console.log(queryURL);
-        console.log(response);
-
 
         for (i = 0; i < 15; i++) {
             var responseTitle = response.results[i].original_name;
             var id = "tv" + i;
-            var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li>';
+            var listID = '<li id="' + id + '" class="tvLink" data-name="">' + responseTitle + '</li>';
 
-            if (response.results[i].origin_country == "US" && i <= 10) {
+            if (response.results[i].origin_country == "US" && i < 10) {
                 $(".tvList").append(listID);
 
             };
@@ -152,14 +141,13 @@ function tvList() {
             url: queryURL2,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
 
             for (i = 0; i < 15; i++) {
                 var responseTitle = response.results[i].original_name;
                 var id = "tv" + i;
-                var listID = '<li id="' + id + '" class="listLink">' + responseTitle + '</li></a>';
+                var listID = '<li id="' + id + '" class="tvLink" data-name="">' + responseTitle + '</li>';
 
-                if (response.results[i].origin_country == "US" && i <= 10) {
+                if (response.results[i].origin_country == "US") {
                     $(".tvTopRated").append(listID);
 
                 };
@@ -167,7 +155,7 @@ function tvList() {
 
             };
 
-            $(".listLink").on("click", function (event) {
+            $(".tvLink").on("click", function (event) {
                 event.preventDefault();
                 title = $(this).attr("data-name");
                 search();
@@ -178,6 +166,16 @@ function tvList() {
     });
 };
 
+function expand() {
+    $(".search").toggleClass("close");
+    $(".input").toggleClass("square");
+    if ($('.search').hasClass('close')) {
+        $('input').focus();
+    } else {
+        $('input').blur();
+    }
+}
+
 
 $(window).on('load', function () {
     tvList();
@@ -185,12 +183,7 @@ $(window).on('load', function () {
 });
 
 
-// Search Button Function
-$("#typeSearchButton").on("click", function (event) {
-    event.preventDefault();
-    title = $("#typeSearch").val().trim();
-    search();
-});
+
 
 // Poster Function
 $(".devPicks").on("click", function (event) {
@@ -199,6 +192,23 @@ $(".devPicks").on("click", function (event) {
     search();
 });
 
+// Animated Search
+$(".search").on("keyup", function (event) {
+    event.preventDefault();
+    console.log(event);
+    title = $("#typeSearch").val().trim();
+    search();
+});
+
+// Search Button Function
+$("#typeSearchButton").on("click", function (event) {
+    event.preventDefault();
+    title = $("#typeSearch").val().trim();
+    search();
+});
+
+// Search Expand
+$('.search').on('click', expand);
 
 
 
