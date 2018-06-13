@@ -51,33 +51,50 @@
 
     <div class="container">
         <div class="row mt-4">
-            <div id="posterHolder" class="col-md-4 center">
+            <div id="posterHolder" class="col-md-4">
                 <img id="poster" class="img-fluid" src="http://placehold.it/300x400" alt="">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 dynamicApiData">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title center" id="title"></h2>
+                        <h2 class="card-title center dynamicApiTitle" id="title"></h2>
                         <p class="card-text">
-                            <strong>Rating:</strong>
+                            <strong>Run Time: </strong>
+                            <span id="runTime"></span>
+                        </p>
+                        <p class="card-text">
+                            <strong>Rating: </strong>
                             <span id="rating"></span>
                         </p>
+                        
                         <p class="card-text">
-                            <strong>Review Scores:</strong>
-                            <span id="reviewScore"></span>
+                            <Strong>Rotten Tomatoes: </Strong>
+                        <span id="rottenTomatoes"></span>
+                    </p>
+                        <p class="card-text">
+                            <Strong>IMDB: </Strong>
+                            <span id="imdb"></span>
                         </p>
                         <p class="card-text">
-                            <strong>Cast:</strong>
+                            <Strong>Metacritic: </Strong>
+                            <span id="metaCritic"></span>
+                        </p>   
+                        <p class="card-text">
+                            <Strong>Awards: </Strong>
+                            <span id="awards"></span>
+                        </p>
+                        <p class="card-text">
+                            <strong>Cast: </strong>
                             <span id="cast"></span>
                         </p>
                         <p class="card-text">
-                            <strong>Synopsis:</strong>
+                            <strong>Synopsis: </strong>
                             <span id="synopsis"></span>
                         </p>
 
                     </div>
                     <div class="card-footer center">
-                        <a href="https://www.imdb.com/showtimes/?ref_=nv_tp_sh_3" class="btn btn-primary">Showtimes</a>
+                        <a href="https://www.imdb.com/showtimes/?ref_=nv_tp_sh_3" target="_blank" class="btn btn-primary background">Showtimes</a>
                     </div>
                 </div>
             </div>
