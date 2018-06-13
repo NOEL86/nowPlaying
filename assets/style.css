@@ -21,6 +21,7 @@ body {
 
 .background {
     background-color: #0e222f !important;
+    border: none !important;
 }
 
 .navbar {
@@ -80,9 +81,22 @@ body {
     text-decoration: underline;
 }
 
-#posterHolder {
-    min-height: 445px;
-    min-width: 300px;
+.dynamicApiTitle {
+    font-weight: bold;
+    padding-bottom: 15px !important;
+}
+    
+.dynamicApiData {
+    font-family: 'Open Sans', sans-serif !important;
+    line-height: 20px !important;
+}
+
+#poster {
+    min-height: 471px !important;
+    min-width: 318px !important;
+    max-height: 471px !important;
+    max-width: 318px !important;
+    border-radius: 5px;
 }
 
 #title {

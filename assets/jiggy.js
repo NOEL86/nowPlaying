@@ -29,9 +29,11 @@ function search() {
 
         var title = response.Title;
         var rating = response.Rated;
-        var imdbScore = response.Ratings[0].Source + ": " + response.Ratings[0].Value;
-        var rottenTomatoesScore = response.Ratings[1].Source + ": " + response.Ratings[1].Value;
-        var metaCrticScore = response.Ratings[2].Source + ": " + response.Ratings[2].Value;
+        var runTime = response.Runtime;
+        var awards = response.Awards;
+        var imdbScore = response.Ratings[0].Value;
+        var rottenTomatoesScore = response.Ratings[1].Value;
+        var metaCrticScore = response.Ratings[2].Value;
         var cast = response.Actors;
         var synopsis = response.Plot;
         var poster = response.Poster;
@@ -39,12 +41,15 @@ function search() {
         newMovie = {
             title: title,
             rating: rating,
+            runTime: runTime,
             imdbScore: imdbScore,
             rottenTomatoesScore: rottenTomatoesScore,
             metaCrticScore: metaCrticScore,
+            awards: awards,
             cast: cast,
             synopsis: synopsis,
             poster: poster,
+            // id: id,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         };
 
