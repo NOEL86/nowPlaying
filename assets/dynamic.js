@@ -127,21 +127,23 @@ $(window).on('load', function () {
             $.ajax({
                 url: queryURL2,
                 method: "GET"
-            }).then(function (results) {
+            }).then(function (response) {
 
-                console.log(results);
+                console.log(response);
 
-                // for (i = 0; i < 3; i++) {
-                //     var responseTitle = response.results[i].original_title;
-                //     var id = "movie" + i;
-                //     var similarID = '<li id="' + id + '" class="listID" data-name="' + responseTitle + '">' + responseTitle + '</li>';
-                //     console.log(listID);
+                $(".similarList").empty();
 
-                //     if (response.results[i].original_language == "en") {
-                //         $(".Similar").append(similarID);
-                //     };
+                for (i = 0; i < 8; i++) {
+                    var responseTitle = response.results[i].title;
+                    var id = "movie" + i;
+                    var similarID = '<p class="card-text similar listLink" id="' + id + '" data-name="' + responseTitle + '">' + responseTitle + '</p>';
+                    console.log(similarID);
 
-                // };
+                    if (response.results[i].original_language == "en") {
+                        $(".similarList").append(similarID);
+                    };
+
+                };
 
             });
 
@@ -163,9 +165,13 @@ $(window).on('load', function () {
 
     });
 
+    // List Link Function
+    $(".listLink").on("click", function (event) {
+        event.preventDefault();
+        title = $(this).attr("data-name");
+        search();
+
+    });
+
 
 });
-
-
-
-
