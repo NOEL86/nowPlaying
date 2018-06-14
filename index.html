@@ -11,7 +11,6 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/animated.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -41,9 +40,11 @@
                     </a>
                 </li>
             </ul>
-            <form id="content">
-                <input id="typeSearch" type="text" name="input" class="input">
-                <button id="typeSearchButton" type="submit" class="search"></button>
+            <form class="form-inline my-2 my-lg-0">
+                <input id="typeSearch" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <a href="dynamic.html">
+                    <button id="typeSearchButton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </a>
             </form>
         </div>
     </nav>
