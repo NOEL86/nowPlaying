@@ -183,8 +183,6 @@ $(window).on('load', function () {
 });
 
 
-
-
 // Poster Function
 $(".devPicks").on("click", function (event) {
     event.preventDefault();
@@ -198,6 +196,7 @@ $(".search").on("keyup", function (event) {
     console.log(event);
     title = $("#typeSearch").val().trim();
     search();
+    $("#typeSearch").val("");
 });
 
 // Search Button Function

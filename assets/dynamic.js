@@ -56,7 +56,6 @@ function renderPage() {
         $("#poster").attr("src", poster);
 
 
-
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
@@ -80,7 +79,7 @@ function getTrailer() {
             $("#ytPlayer").empty();
 
             $("#ytPlayer").append("<iframe id=\"player\" type\"text/html\" width=\"100%\" height=\"350px\" src=\"\" frameborder=\"0\"></iframe>");
-            
+
             $("#player").attr('src', "https://www.youtube.com/embed/" + response.items[1].id.videoId + "?autoplay=0");
 
         });
@@ -121,7 +120,7 @@ function similarMovies() {
                         search();
 
                     });
-                    
+
                 };
 
             };
@@ -130,6 +129,12 @@ function similarMovies() {
     });
 };
 
+
+$('#bounce1').addClass('double-bounce1')
+$('#bounce2').addClass('double-bounce2')
+
+$('#bounce1').removeClass('double-bounce1')
+$('#bounce2').removeClass('double-bounce2')
 // Search Function
 function search() {
 
@@ -137,6 +142,7 @@ function search() {
         url: "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&type=movie&rating=&" + apiKey,
         method: "GET"
     }).then(function (response) {
+
 
         var title = response.Title;
         var rating = response.Rated;
@@ -172,13 +178,27 @@ function search() {
 };
 
 
+setTimeout(function () {
+    $('#bounce1').removeClass('double-bounce1');
+    $('#bounce2').removeClass('double-bounce2');
+    $('.spinner').remove();
+    $('.container').show();
+
+
+
+}, 2000);
+
+
 $(window).on('load', function () {
+    $('#bounce1').addClass('double-bounce1');
+    $('#bounce2').addClass('double-bounce2');
+    $('.container').hide();
     renderPage();
     getTrailer();
     similarMovies();
 
-    
 });
+
 
 // Search Button Function
 $("#dynamicSearchButton").on("click", function (event) {
@@ -188,3 +208,4 @@ $("#dynamicSearchButton").on("click", function (event) {
     $("#dynamicSearch").val("");
 
 });
+
